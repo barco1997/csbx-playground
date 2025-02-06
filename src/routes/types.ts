@@ -7,7 +7,7 @@ export type LocalPath = (typeof MAPPING)[View];
 
 export type Route = {
   view: View;
-  layout?: (props: { routes: Route[] }) => ReactNode;
+  layout?: (props: { children: ReactNode }) => ReactNode;
   element?: ReactNode;
-  children: Route[];
+  children?: Route[];
 };

@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 import "./App.css";
 import { useCurrentView } from "./routes/utils";
-import { Route } from "./routes/types";
 
-const App = ({ routes }: { routes: Route[] }) => {
+const App = ({ children }: { children: ReactNode }) => {
   const [count, setCount] = useState(0);
   const { currentView } = useCurrentView();
 
@@ -15,6 +14,7 @@ const App = ({ routes }: { routes: Route[] }) => {
           count is {count}, currentView: {currentView}
         </button>
       </div>
+      {children}
     </>
   );
 };

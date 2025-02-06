@@ -9,27 +9,37 @@ export const RenderRoutes = ({
   treeLevel?: number;
 }) => {
   const { allMatchedViews } = useCurrentView();
-  const currentLevelMatchedViews = allMatchedViews.slice(0, treeLevel + 1);
+
+  const currentLevelMatchedViews = allMatchedViews.slice(
+    treeLevel,
+    treeLevel + 1
+  );
 
   const currentLevelRoute = currentLevelMatchedViews.reduce<{
-    routes: Route[];
+    routes?: Route[];
     currentRoute?: Route;
   }>(
     (acc, currentEl) => {
       const currentRoute =
-        acc.routes.find((route) => route.view === currentEl) || ({} as Route);
+        acc.routes?.find((route) => route.view === currentEl) || ({} as Route);
       return {
         currentRoute,
         routes: currentRoute.children,
       };
     },
     { routes }
-  ).currentRoute;
+  )?.currentRoute;
 
   const { children, layout, element } = currentLevelRoute || {};
 
   const renderElement =
-    layout && children ? layout({ routes: children }) : element || null;
+    layout && children
+      ? layout({
+          children: (
+            <RenderRoutes routes={children} treeLevel={treeLevel + 1} />
+          ),
+        })
+      : element || null;
 
   return renderElement;
 };
