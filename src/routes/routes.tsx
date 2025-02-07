@@ -1,7 +1,8 @@
 import { Navigate } from "react-router-dom";
 import { getPath } from "./utils";
-import App from "../App";
+
 import { Route } from "./types";
+import { Main } from "../layouts/main/main";
 
 export const routes: Route[] = [
   {
@@ -10,7 +11,7 @@ export const routes: Route[] = [
   },
   {
     view: "MAIN",
-    layout: (props) => <App {...props} />,
+    layout: (props) => <Main {...props} />,
     children: [
       {
         view: "MAIN_ABOUT",
@@ -24,6 +25,6 @@ export const routes: Route[] = [
   },
   {
     view: "CONTACTS",
-    element: <div />,
+    element: <div>CONTACTS</div>,
   },
 ];

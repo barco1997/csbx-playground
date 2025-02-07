@@ -1,9 +1,9 @@
 import { ReactNode, useState } from "react";
 
-import "./App.css";
-import { useCurrentView } from "./routes/utils";
+import "./main.css";
+import { useCurrentView } from "../../routes/utils";
 
-const App = ({ children }: { children: ReactNode }) => {
+export const Main = ({ children }: { children: ReactNode }) => {
   const [count, setCount] = useState(0);
   const { currentView } = useCurrentView();
 
@@ -18,5 +18,3 @@ const App = ({ children }: { children: ReactNode }) => {
     </>
   );
 };
-
-export default App;
