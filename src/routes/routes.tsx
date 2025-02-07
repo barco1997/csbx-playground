@@ -3,6 +3,7 @@ import { getPath } from "./utils";
 
 import { Route } from "./types";
 import { Main } from "../layouts/main/main";
+import { About } from "../components/about";
 
 export const routes: Route[] = [
   {
@@ -15,7 +16,7 @@ export const routes: Route[] = [
     children: [
       {
         view: "MAIN_ABOUT",
-        element: <div>ABOUT</div>,
+        element: <About />,
       },
       {
         view: "MAIN_FEEDBACK",

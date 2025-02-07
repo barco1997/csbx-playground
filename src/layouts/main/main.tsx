@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, Suspense, use, useState } from "react";
 
 import "./main.css";
 import { useCurrentView } from "../../routes/utils";
@@ -14,7 +14,7 @@ export const Main = ({ children }: { children: ReactNode }) => {
           count is {count}, currentView: {currentView}
         </button>
       </div>
-      {children}
+      <Suspense fallback={<div>oOo Loading</div>}>{children}</Suspense>
     </>
   );
 };
